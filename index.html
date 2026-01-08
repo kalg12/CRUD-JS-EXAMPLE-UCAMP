@@ -3,9 +3,98 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CRUD - TO-DO</title>
+    <title>CRUD To-Do (localStorage)</title>
+
+    <!-- Vinculamos el CSS -->
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h1>Welcome to the project! :D</h1>
+    <!-- Contenedor principal -->
+    <main class="app">
+      <header class="header">
+        <h1>✅ Mis tareas</h1>
+        <p class="muted">CRUD completo con HTML, CSS y JS + localStorage</p>
+      </header>
+
+      <!-- Formulario para CREAR / ACTUALIZAR -->
+      <section class="card">
+        <form id="taskForm" class="form">
+          <!-- Input principal -->
+          <div class="field">
+            <label for="title">Tarea</label>
+            <input
+              id="title"
+              type="text"
+              placeholder="Ej: Estudiar JavaScript"
+              autocomplete="off"
+            />
+            <small id="titleError" class="error hidden"
+              >Escribe una tarea (mínimo 3 caracteres).</small
+            >
+          </div>
+
+          <!-- Prioridad (extra) -->
+          <div class="field">
+            <label for="priority">Prioridad</label>
+            <select id="priority">
+              <option value="low">Baja</option>
+              <option value="medium" selected>Media</option>
+              <option value="high">Alta</option>
+            </select>
+          </div>
+
+          <!-- Botones -->
+          <div class="actions">
+            <!-- Botón principal (cambia a "Actualizar" cuando editas) -->
+            <button id="submitBtn" type="submit">Agregar</button>
+
+            <!-- Botón cancelar edición (solo visible editando) -->
+            <button id="cancelEditBtn" type="button" class="secondary hidden">
+              Cancelar edición
+            </button>
+          </div>
+
+          <!-- Guardamos aquí el id de la tarea cuando estamos editando -->
+          <input id="editingId" type="hidden" />
+        </form>
+      </section>
+
+      <!-- Barra de búsqueda y filtros -->
+      <section class="toolbar">
+        <input id="search" type="search" placeholder="Buscar tarea..." />
+
+        <div class="filters">
+          <button class="chip active" data-filter="all">Todas</button>
+          <button class="chip" data-filter="pending">Pendientes</button>
+          <button class="chip" data-filter="done">Completadas</button>
+        </div>
+      </section>
+
+      <!-- Lista de tareas (READ) -->
+      <section class="card">
+        <div class="listHeader">
+          <h2>Lista</h2>
+          <div class="stats">
+            <span id="countTotal">0</span> total ·
+            <span id="countPending">0</span> pendientes ·
+            <span id="countDone">0</span> completadas
+          </div>
+        </div>
+
+        <ul id="taskList" class="taskList"></ul>
+
+        <!-- Estado vacío -->
+        <p id="emptyState" class="muted empty">
+          No hay tareas todavía. Agrega una 👆
+        </p>
+      </section>
+
+      <footer class="footer muted">
+        Hecho con ❤️ (sin librerías) · Persistencia con localStorage
+      </footer>
+    </main>
+
+    <!-- Vinculamos el JS -->
+    <script src="app.js"></script>
   </body>
 </html>
