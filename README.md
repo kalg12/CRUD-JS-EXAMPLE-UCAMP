@@ -8,7 +8,7 @@ Puedes ver el enlace del proyecto en el siguiente link:
 
 ## Demo
 
-Insert gif or link to demo
+[Insert gif or link to demo](https://kalg12.github.io/CRUD-JS-EXAMPLE-UCAMP/)
 ## FAQ
 
 #### ¿Qué tecnologías se usaron?
